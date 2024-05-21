@@ -1,5 +1,5 @@
 [package]
-name = "Simple-SQL-Engine"
+name = "simple_sql_engine"
 version = "0.1.0"
 edition = "2021"
 
