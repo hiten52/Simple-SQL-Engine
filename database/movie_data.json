@@ -18,18 +18,22 @@
     ],
     "actors_in_movies": [
         {
+            "id": 1,
             "actorID": 1,
             "movieID": 1
         },
         {
+            "id": 2,
             "actorID": 2,
             "movieID": 1
         },
         {
+            "id": 3,
             "actorID": 3,
             "movieID": 2
         },
         {
+            "id": 4,
             "actorID": 4,
             "movieID": 3
         }
