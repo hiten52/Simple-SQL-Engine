@@ -1,3 +1,8 @@
+mod database;
+
 fn main() {
-    println!("Hello, world!");
+    let database_file_name = "database/movie_data.json";
+    let db = database::load_database(database_file_name).unwrap();
+
+    println!("{db:?}");
 }
