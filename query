@@ -1,5 +1,5 @@
 SELECT movies.title, actors.name
 FROM movies
-JOIN actors_in_movies ON actors_in_movies.movieID = movies.ID
-JOIN actors ON actors_in_movies.actorID = actors.ID
+JOIN actors_in_movies ON actors_in_movies.movieID = movies.id
+JOIN actors ON actors_in_movies.actorID = actors.id
 WHERE movies.cert <= 15
