@@ -1,6 +1,7 @@
 use std::fs;
 
 mod database;
+mod engine;
 mod parser;
 
 fn main() {
@@ -9,8 +10,11 @@ fn main() {
     
     let query_file_path = "query";
     let sql_query = fs::read_to_string(query_file_path).unwrap();
-   
-    println!("{db:?}\n");
-    println!("{sql_query}\n");
+    let parsed_query = parser::parse_query(&sql_query);
+    
     println!("{:?}\n", parser::parse_query(&sql_query));
+    let v = engine::View::execute(parsed_query, db);
+   
+    println!("{sql_query}\n");
+    println!("{:?}", v.rows);
 }

@@ -5,10 +5,10 @@ use std::fs;
 use std::io;
 
 /// Represents a row in a database table.
-#[derive(Debug, PartialEq, Eq)]
-struct Row {
-    id: u128,
-    columns: BTreeMap<String, Value>,
+#[derive(Debug, PartialEq, Eq, Clone)]
+pub struct Row {
+    pub id: u128,
+    pub columns: BTreeMap<String, Value>,
 }
 
 impl Ord for Row {
@@ -25,8 +25,8 @@ impl PartialOrd for Row {
 
 /// Represents a database table, which contains a set of rows.
 #[derive(Debug)]
-struct Table {
-    rows: BTreeSet<Row>,
+pub struct Table {
+    pub rows: BTreeSet<Row>,
 }
 
 impl Table {
@@ -51,7 +51,7 @@ impl Table {
 /// Represents a database, which contains multiple tables.
 #[derive(Debug)]
 pub struct Database {
-    tables: BTreeMap<String, Table>,
+    pub tables: BTreeMap<String, Table>,
 }
 
 impl Database {

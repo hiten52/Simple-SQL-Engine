@@ -3,10 +3,10 @@ use std::str::FromStr;
 /// Represents a parsed SQL query.
 #[derive(Debug)]
 pub struct Query<'a> {
-    select: Vec<Column>,
-    from: String,
-    joins: Vec<Join>,
-    where_clause: Option<ValueTest>,
+    pub select: Vec<Column>,
+    pub from: String,
+    pub joins: Vec<Join>,
+    pub where_clause: Option<ValueTest>,
     input: Input<'a>,
 }
 
@@ -18,44 +18,44 @@ struct Input<'a> {
 }
 
 /// Represents a column in a SQL query.
-#[derive(Debug)]
-struct Column {
-    table_name: String,
-    column_name: String,
+#[derive(Debug, Clone)]
+pub struct Column {
+    pub table_name: String,
+    pub column_name: String,
 }
 
 /// Represents a JOIN clause in a SQL query.
 #[derive(Debug)]
-struct Join {
-    table_name: String,
-    on: ValueTest,
+pub struct Join {
+    pub table_name: String,
+    pub on: ValueTest,
 }
 
 /// Represents a value test (e.g., a condition in a WHERE clause).
 #[derive(Debug)]
-struct ValueTest {
-    left: Value,
-    comparison: Comparison,
-    right: Value,
+pub struct ValueTest {
+    pub left: Value,
+    pub comparison: Comparison,
+    pub right: Value,
 }
 
 /// Represents a value in a SQL query, which can be a column or a constant.
-#[derive(Debug)]
-enum Value {
+#[derive(Debug, Clone)]
+pub enum Value {
     Column(Column),
     Const(Const),
 }
 
 /// Represents a constant value in a SQL query, which can be a number or a string.
-#[derive(Debug)]
-enum Const {
+#[derive(Debug, Clone)]
+pub enum Const {
     Number(i64),
     String(String),
 }
 
 /// Represents a comparison operator in a SQL query.
 #[derive(Debug, PartialEq)]
-enum Comparison {
+pub enum Comparison {
     Eq,
     Gt,
     Lt,
