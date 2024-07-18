@@ -1,0 +1,59 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "The Matrix",
+            "cert": 15
+        },
+        {
+            "id": 2,
+            "title": "Titanic",
+            "cert": 12
+        },
+        {
+            "id": 3,
+            "title": "Alien",
+            "cert": 18
+        }
+    ],
+    "actors_in_movies": [
+        {
+            "id": 1,
+            "actorID": 1,
+            "movieID": 1
+        },
+        {
+            "id": 2,
+            "actorID": 2,
+            "movieID": 1
+        },
+        {
+            "id": 3,
+            "actorID": 3,
+            "movieID": 2
+        },
+        {
+            "id": 4,
+            "actorID": 4,
+            "movieID": 3
+        }
+    ],
+    "actors": [
+        {
+            "id": 1,
+            "name": "Keanu Reeves"
+        },
+        {
+            "id": 2,
+            "name": "Carrie-Anne Moss"
+        },
+        {
+            "id": 3,
+            "name": "Leonardo DiCaprio"
+        },
+        {
+            "id": 4,
+            "name": "Sigourney Weaver"
+        }
+    ]
+}

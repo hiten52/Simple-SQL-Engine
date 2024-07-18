@@ -329,18 +329,42 @@ mod tests {
     use super::*;
     use crate::{database, parser};
 
-    // Define tests for View execution here
     #[test]
-    fn test_execute_query() {
-        let db_file_path = "database/movie_data.json";
+    fn test_from() {
+        let db_file_path = "database/test_data.json";
         let db = database::load_database(db_file_path).unwrap();
 
-        let query_file_path = "query";
-        let query = std::fs::read_to_string(query_file_path).unwrap();
+        let query = "SELECT movies.title FROM movies";
         let parsed_query = parser::parse_query(&query);
 
         let view = View::execute(parsed_query, db);
 
-        assert_eq!(view.rows.len(), 2);
+        assert_eq!(view.rows.len(), 3);
+    }
+
+    #[test]
+    fn test_joins() {
+        let db_file_path = "database/test_data.json";
+        let db = database::load_database(db_file_path).unwrap();
+
+        let query = "SELECT movies.title, actors.name FROM movies JOIN actors_in_movies ON actors_in_movies.movieID = movies.id JOIN actors ON actors_in_movies.actorID = actors.id";
+        let parsed_query = parser::parse_query(&query);
+
+        let view = View::execute(parsed_query, db);
+
+        assert_eq!(view.rows.len(), 4);
+    }
+
+    #[test]
+    fn test_where() {
+        let db_file_path = "database/test_data.json";
+        let db = database::load_database(db_file_path).unwrap();
+
+        let query = "SELECT movies.title, actors.name FROM movies JOIN actors_in_movies ON actors_in_movies.movieID = movies.id JOIN actors ON actors_in_movies.actorID = actors.id WHERE movies.cert <= 15";
+        let parsed_query = parser::parse_query(&query);
+
+        let view = View::execute(parsed_query, db);
+
+        assert_eq!(view.rows.len(), 3);
     }
 }
