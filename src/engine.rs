@@ -1,3 +1,6 @@
+use std::cmp::max;
+use std::fmt::Write;
+
 use crate::database::Database;
 use crate::parser::{Column, Comparison, Const, Query, Value};
 use std::collections::{BTreeMap, BTreeSet};
@@ -120,8 +123,6 @@ impl<'a> View<'a> {
     ///
     /// A `View` object with the selected columns.
     fn select(self) -> View<'a> {
-        let mut selected_rows: Vec<BTreeMap<String, Value>> = vec![];
-
         let column_names: BTreeSet<String> = self
             .parsed_query
             .select
@@ -129,7 +130,7 @@ impl<'a> View<'a> {
             .map(|c| format!("{}.{}", c.table_name, c.column_name))
             .collect();
 
-        selected_rows = self
+        let selected_rows = self
             .rows
             .into_iter()
             .map(|x| {
@@ -235,6 +236,68 @@ impl<'a> View<'a> {
                 columns
             })
             .collect()
+    }
+
+    /// Displays the contents of the `View` in a table format.
+    pub fn display(&self) {
+        if self.rows.is_empty() {
+            println!("No data to display");
+            return;
+        }
+
+        // Collect all column names
+        let columns: Vec<&String> = self.rows[0].keys().collect();
+
+        // Determine the width of each column
+        let mut column_widths = BTreeMap::new();
+        for column in &columns {
+            column_widths.insert(*column, column.len());
+        }
+        for row in &self.rows {
+            for (column, value) in row {
+                let width = max(column_widths[column], value.to_string().len());
+                column_widths.insert(column, width);
+            }
+        }
+
+        // Print header
+        let mut header = String::new();
+        for column in &columns {
+            let width = column_widths[column];
+            write!(header, "{:width$} | ", column, width = width).unwrap();
+        }
+        println!("{}", header);
+
+        // Print separator
+        let mut separator: String = columns
+            .iter()
+            .enumerate()
+            .map(|column| {
+                "-".repeat(
+                    column_widths[column.1] + 1 + {
+                        if column.0 != 0 {
+                            1
+                        } else {
+                            0
+                        }
+                    },
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("|");
+        separator.push('|');
+        println!("{}", separator);
+
+        // Print rows
+        for row in &self.rows {
+            let mut row_str = String::new();
+            for column in &columns {
+                let width = column_widths[column];
+                let value = row.get(*column).unwrap().to_string();
+                write!(row_str, "{:width$} | ", value, width = width).unwrap();
+            }
+            println!("{}", row_str);
+        }
     }
 }
 
