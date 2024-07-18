@@ -41,3 +41,32 @@ Note that SQL is not case sensitive; `SELECT` and `select` are equivalent.
 
 ### Valid Table and Column Names
 A "valid SQL table/column name" is a name containing only letters, numbers, and the '_' character, with no spaces (`/[a-zA-Z0-9_]+/`).
+
+## Getting Started
+
+### Prerequisites
+Ensure you have the following software installed before proceeding:
+
+**Rustc**: Necessary to compile rust code.
+
+### Installation
+
+**1. Clone the Repository**:
+Clone the project to your local machine using the following command:
+```bash
+git clone https://github.com/hiten52/Simple-SQL-Engine.git
+```
+
+**2. Navigate to the Project Directory**:
+Change into the project directory:
+```bash
+cd Simple-SQL-Engine
+```
+
+**3. Type your query in "query" file**
+
+**3. Run the Project**:
+Run the project using Cargo:
+```bash
+cargo run
+```
