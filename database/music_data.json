@@ -1,0 +1,156 @@
+{
+    "albums": [
+        {
+            "id": 1,
+            "title": "Abbey Road",
+            "genre": "Rock",
+            "artistID": 1,
+            "rating": 4
+        },
+        {
+            "id": 2,
+            "title": "Thriller",
+            "genre": "Pop",
+            "artistID": 2,
+            "rating": 8
+        },
+        {
+            "id": 3,
+            "title": "Back in Black",
+            "genre": "Rock",
+            "artistID": 3,
+            "rating": 7
+        },
+        {
+            "id": 4,
+            "title": "21",
+            "genre": "Soul",
+            "artistID": 4,
+            "rating": 6
+        }
+    ],
+    "artists": [
+        {
+            "id": 1,
+            "name": "The Beatles"
+        },
+        {
+            "id": 2,
+            "name": "Michael Jackson"
+        },
+        {
+            "id": 3,
+            "name": "AC/DC"
+        },
+        {
+            "id": 4,
+            "name": "Adele"
+        }
+    ],
+    "songs": [
+        {
+            "id": 1,
+            "title": "Come Together",
+            "albumID": 1,
+            "rating": 4
+        },
+        {
+            "id": 2,
+            "title": "Something",
+            "albumID": 1,
+            "rating": 7
+        },
+        {
+            "id": 3,
+            "title": "Billie Jean",
+            "albumID": 2,
+            "rating": 9
+        },
+        {
+            "id": 4,
+            "title": "Thriller",
+            "albumID": 2,
+            "rating": 4
+        },
+        {
+            "id": 5,
+            "title": "Hells Bells",
+            "albumID": 3,
+            "rating": 9
+        },
+        {
+            "id": 6,
+            "title": "Back in Black",
+            "albumID": 3,
+            "rating": 3
+        },
+        {
+            "id": 7,
+            "title": "Rolling in the Deep",
+            "albumID": 4,
+            "rating": 6
+        },
+        {
+            "id": 8,
+            "title": "Someone Like You",
+            "albumID": 4,
+            "rating": 4
+        }
+    ],
+    "playlists": [
+        {
+            "id": 1,
+            "name": "Rock Classics"
+        },
+        {
+            "id": 2,
+            "name": "Pop Hits"
+        },
+        {
+            "id": 3,
+            "name": "Soul Vibes"
+        }
+    ],
+    "songs_in_playlists": [
+        {
+            "id": 1,
+            "songID": 1,
+            "playlistID": 1
+        },
+        {
+            "id": 2,
+            "songID": 2,
+            "playlistID": 1
+        },
+        {
+            "id": 3,
+            "songID": 5,
+            "playlistID": 1
+        },
+        {
+            "id": 4,
+            "songID": 6,
+            "playlistID": 1
+        },
+        {
+            "id": 5,
+            "songID": 3,
+            "playlistID": 2
+        },
+        {
+            "id": 6,
+            "songID": 4,
+            "playlistID": 2
+        },
+        {
+            "id": 7,
+            "songID": 7,
+            "playlistID": 3
+        },
+        {
+            "id": 8,
+            "songID": 8,
+            "playlistID": 3
+        }
+    ]
+}
