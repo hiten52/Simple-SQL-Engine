@@ -275,6 +275,7 @@ impl<'a> Query<'a> {
 
         if self.input.peek() == Some('\'') {
             // Parse single-quoted string constant
+            self.input.expect("'")?;
             let const_value = self.input.consume_until_any(&['\''])?.to_string();
             self.input.expect("'")?;
             Ok(Value::Const(Const::String(const_value)))
