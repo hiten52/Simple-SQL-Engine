@@ -18,7 +18,7 @@ The engine does not support:
 * IN or LIKE, or any other operator other than simple equality, inequality, and greater than/less than.
 * AND or OR; only a single WHERE condition is allowed.
 
-## SQL grammer
+## SQL grammar
 The SQL queries must adhere to the following EBNF grammar:
 
 ```text
